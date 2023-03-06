@@ -1,7 +1,20 @@
 # 1er-Proyecto-DAI
 Data base + Web Page. Authors: Juan Manuel Ambriz Nuñez, Daniela del Rio Diaz, Natalia Gomez 
 
+## Authors
+
+| Name                     | Correo           | Github                      |
+| ------------------------ | ---------------- |-----------------------------|
+| Juan Manuel Ambriz       | jambrizn@itam.mx | https://github.com/jman0306 |
+| Daniela del Rio          |                  |                             |
+| Natalia Gomez            |                  |                             |
+
 ## SQL
+
+## Link Entity Diagram
+
+## Relational Model
+
 
 ### Creation of tables
 
