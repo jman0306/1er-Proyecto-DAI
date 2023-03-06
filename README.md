@@ -3,7 +3,7 @@ Data base + Web Page
 
 ## Authors
 
-| Name                     | Correo           | Github                           |
+| Name                     | Email            | Github                           |
 | ------------------------ | ---------------- |----------------------------------|
 | Juan Manuel Ambriz       | jambrizn@itam.mx | https://github.com/jman0306      |
 | Daniela del Rio          | ddelriod@itam.mx | https://github.com/Daniela020702 |
