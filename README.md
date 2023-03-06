@@ -3,11 +3,11 @@ Data base + Web Page
 
 ## Authors
 
-| Name                     | Correo           | Github                      |
-| ------------------------ | ---------------- |-----------------------------|
-| Juan Manuel Ambriz       | jambrizn@itam.mx | https://github.com/jman0306 |
-| Daniela del Rio          |                  |                             |
-| Natalia Gomez            |                  |                             |
+| Name                     | Correo           | Github                           |
+| ------------------------ | ---------------- |----------------------------------|
+| Juan Manuel Ambriz       | jambrizn@itam.mx | https://github.com/jman0306      |
+| Daniela del Rio          | ddelriod@itam.mx | https://github.com/Daniela020702 |
+| Natalia Gomez            |                  |                                  |
 
 ## SQL
 
