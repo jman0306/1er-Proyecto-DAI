@@ -1,4 +1,4 @@
-# 1er-Proyecto-DAI
+# 1est-Proyect-DAI
 Data base + Web Page
 
 ## Authors
