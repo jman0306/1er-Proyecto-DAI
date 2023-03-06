@@ -1,5 +1,5 @@
 # 1er-Proyecto-DAI
-Data base + Web Page. Authors: Juan Manuel Ambriz Nuñez, Daniela del Rio Diaz, Natalia Gomez 
+Data base + Web Page
 
 ## Authors
 
