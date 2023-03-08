@@ -7,7 +7,7 @@ Data base + Web Page
 | ------------------------ | ---------------- |----------------------------------|
 | Juan Manuel Ambriz       | jambrizn@itam.mx | https://github.com/jman0306      |
 | Daniela del Rio          | ddelriod@itam.mx | https://github.com/Daniela020702 |
-| Natalia Gomez            |                  |                                  |
+| Natalia Gomez            | ngomeza1@itam.mx |                                  |
 
 ## SQL
 
