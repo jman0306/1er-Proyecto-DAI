@@ -15,7 +15,7 @@ Data base + Web Page
 
 ![Link Entity Diagram](https://github.com/jman0306/First-Proyect-DAI/blob/main/ModeloRelacionalRedLectura.jpg)
 
-## Relational Model
+### Relational Model
 
 
 ### Creation of tables
