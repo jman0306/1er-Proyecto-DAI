@@ -23,13 +23,6 @@ Data base + Web Page
 ```SQL
 use RedLectura
 
-create table pagina(
-cPagina int primary key,
-nombre varchar(50) not null,
-URL varchar(500) not null
-)
-
-
 create table editorial(
 cEditorial int primary key not null,
 nombre varchar(50) not null,
@@ -62,6 +55,7 @@ cEditorial int references editorial not null
 create table edicion(
 cEdicion int primary key not null,
 nombre varchar(50) not null,
+link varchar(500),
 cLibro int references libro not null
 )
 
@@ -76,19 +70,13 @@ cNacionalidad int references nacionalidad
 
 create table comentario(
 cComentario int primary key not null,
-texto varchar(1000) not null,
+texto varchar(1500) not null,
 cUsuario int references usuario not null
 )
 
 create table etiqueta(
 cEtiqueta int primary key not null,
 nombre varchar(50) not null
-)
-
-create table paginaEdicion(
-cPagina int references pagina,
-cEdicion int references edicion,
-primary key(cPagina, cEdicion)
 )
 
 create table libroAutor(
@@ -135,10 +123,6 @@ primary key(cUsuario, cUsuario2)
 ```SQL
 use RedLectura
 
-insert into pagina values(1, 'Amazon', 'https://www.amazon.com.mx/ebooks')
-insert into pagina values(2, 'Scribd', 'https://es.scribd.com/books')
-insert into pagina values(3, 'La casa del libro', 'https://latam.casadellibro.com/ebooks')
-
 insert into editorial values(1, 'RM Verlag', 'Calle Girona, 27, Granollers, 08402 , Barcelona')
 insert into editorial values(2, 'PLAZA & JANÉS', 'Travessera de Gràcia 47-49, 08021 Barcelona')
 insert into editorial values(3, 'Planeta México', 'Av. Presidente Masaryk 111, 11570 Mexico')
@@ -159,9 +143,9 @@ insert into libro values(1, 'Pedro Paramo','Rulfo, J. (2019). Pedro Páramo (1.a
 insert into libro values(2, 'Billy Summers','King, S. (2021). Billy Summers (Spanish Edition) (Bilingual). Vintage Espanol.',2)
 insert into libro values(3, 'Una mentira perfecta','Spain, J. (2023). Una mentira perfecta. Planeta México.',3)
 
-insert into edicion values(1, 'Primera Edicion', 1)
-insert into edicion values(2, 'Español', 2)
-insert into edicion values(3, 'Bilingue', 3)
+insert into edicion values(1, 'Primera Edicion', 'https://es.scribd.com/book/412287522/Pedro-Paramo', 1)
+insert into edicion values(2, 'Español', 'https://www.amazon.com/-/es/Stephen-King-ebook/dp/B08V48WFCT/ref=sr_1_1?__mk_es_US=%C3%85M%C3%85%C5%BD%C3%95%C3%91&crid=1QCMRWYWBV0OV&keywords=billy+summers&qid=1678281134&s=digital-text&sprefix=billy+summers%2Cdigital-text%2C137&sr=1-1', 2)
+insert into edicion values(3, 'Bilingue', 'https://latam.casadellibro.com/ebook-una-mentira-perfecta-edicion-mexicana-ebook/9786070795930/13517488', 3)
 
 insert into usuario values(1, 'Natalia Gomez', 'natGom@gmail.com', '2001/09/03', 'Nati09', 1)
 insert into usuario values(2, 'Daniela del Rio', 'daniRi@gmail.com', '2001/05/28', 'Dani05', 2)
@@ -174,10 +158,6 @@ insert into comentario values(3, 'Novela lenta y liosa debido a la gran cantidad
 insert into etiqueta values(1, 'Maravilloso')
 insert into etiqueta values(2, 'Predecible')
 insert into etiqueta values(3, 'Tedioso')
-
-insert into paginaEdicion values(1, 1)
-insert into paginaEdicion values(2, 2)
-insert into paginaEdicion values(3, 3)
 
 insert into libroAutor values(1, 1)
 insert into libroAutor values(2, 2)
@@ -198,9 +178,9 @@ insert into libroEtiqueta values(3, 3)
 insert into lista values(1, 'T', 'T', 'F', 1, 1)
 insert into lista values(2, 'F', 'F', 'T', 2, 2)
 insert into lista values(3, 'F', 'T', 'F', 3, 3)
-insert into lista values(1, 'T', 'T', 'F', 1, 3)
-insert into lista values(1, 'F', 'T', 'F', 2, 1)
-insert into lista values(1, 'F', 'T', 'F', 3, 2)
+insert into lista values(4, 'T', 'T', 'F', 1, 3)
+insert into lista values(5, 'F', 'T', 'F', 2, 1)
+insert into lista values(6, 'F', 'T', 'F', 3, 2)
 
 insert into amigo values(1,2)
 insert into amigo values(2,3)
