@@ -13,7 +13,7 @@ Data base + Web Page
 
 ### Link Entity Diagram
 
-![Link Entity Diagram](https://github.com/jman0306/First-Proyect-DAI/blob/main/Modelo%20Relacional%20RedLectura.jpg)
+![Link Entity Diagram](https://github.com/jman0306/First-Proyect-DAI/blob/main/1er%20Proyecto/DiagramaEVRedLectura.jpg)
 
 ### Relational Model
 
