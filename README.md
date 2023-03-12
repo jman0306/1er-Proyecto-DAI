@@ -17,6 +17,23 @@ Data base + Web Page
 
 ### Relational Model
 
+```
+editorial (cEditorial(PK), nombre dirección)
+genero (cGenero(PK), tipo)
+nacionalidad (cNacionalidad(PK), nombre)
+etiqueta (cEtiqueta(PK), nombre)
+autor (CAutor(PK), nombre, cNacionalidad(FK))
+libro (cLibro(PK), nombre, fichaBiblio, calificación, suspendido, denuncias, cEditorial(FK))
+edicion (cEdicion(PK), nombre, link, cLibro(FK))
+usuario (cUsuario(PK), nombre, correo, fNacimiento, contraseña, cNacionalidad(FK))
+comentario (cComentario(PK), texto, fecha, cUsuario(FK))
+lista (cLista(PK), favorito, leído, porLeer, cUsuario(FK), cLibro(FK))
+libroAutor (cLibro(PK)(FK), cAutor(PK)(FK))
+libroGenero (cLibro(PK)(FK), cGenero(PK)(FK))
+libroEtiqueta (cLibro(PK)(FK), cEtiqueta(PK)(FK))
+comentarioEtiqueta (cComentrio(PK)(FK), cEtiqueta(PK)(FK))
+amigo (cUsuario(PK)(FK), cUsuario2(PK)(FK))
+```
 
 ### Creation of tables
 
@@ -36,6 +53,11 @@ tipo varchar(50) not null
 
 create table nacionalidad(
 cNacionalidad int primary key not null,
+nombre varchar(50) not null
+)
+
+create table etiqueta(
+cEtiqueta int primary key not null,
 nombre varchar(50) not null
 )
 
@@ -78,9 +100,13 @@ fecha date not null,
 cUsuario int references usuario not null
 )
 
-create table etiqueta(
-cEtiqueta int primary key not null,
-nombre varchar(50) not null
+create table lista(
+cLista int primary key,
+favorito varchar(1),
+leido varchar(1),
+porLeer varchar(1),
+cUsuario int references usuario,
+cLibro int references libro
 )
 
 create table libroAutor(
@@ -95,25 +121,16 @@ cGenero int references genero,
 primary key(cLibro, cGenero)
 )
 
-create table comentarioEtiqueta(
-cComentario int references comentario,
-cEtiqueta int references etiqueta,
-primary key(cComentario, cEtiqueta)
-)
-
 create table libroEtiqueta(
 cLibro int references libro,
 cEtiqueta int references etiqueta,
 primary key(cLibro, cEtiqueta)
 )
 
-create table lista(
-cLista int primary key,
-favorito varchar(1),
-leido varchar(1),
-porLeer varchar(1),
-cUsuario int references usuario,
-cLibro int references libro
+create table comentarioEtiqueta(
+cComentario int references comentario,
+cEtiqueta int references etiqueta,
+primary key(cComentario, cEtiqueta)
 )
 
 create table amigo(
@@ -139,6 +156,10 @@ insert into nacionalidad values(1, 'Mexico')
 insert into nacionalidad values(2, 'Estados Unidos')
 insert into nacionalidad values(3, 'Irlanda')
 
+insert into etiqueta values(1, 'Maravilloso')
+insert into etiqueta values(2, 'Predecible')
+insert into etiqueta values(3, 'Tedioso')
+
 insert into autor values(1, 'Juan Rulfo', 1)
 insert into autor values(2, 'Stephen King', 2)
 insert into autor values(3, 'Jo Spain', 3)
@@ -159,9 +180,12 @@ insert into comentario values(1, 'Una excelente representación de un pueblo fan
 insert into comentario values(2, 'Que más se puede decir de este libro, tiene una secuencia de en la narrativa que te atrapa no puedes dejar de leer y leer a pesar de que algunas partes son un tanto predecibles el clic que haces con la historia te mantiene atento en todo momento, lo mejor que he leído en esta pandemia', '2023/03/05', 2)
 insert into comentario values(3, 'Novela lenta y liosa debido a la gran cantidad de personajes, los vecinos de una lujosa urbanización llamada Valle Marchito, donde fallece una de las vecinas y cuyo cuerpo está en casa descomponiéndose y sin que nadie se preocupe por ella durante tres meses.La única voz que engancha es la de Olive, la fallecida, el resto, en tercera persona, no dice mucho. Todos los vecinos tienen sus problemas y sus secretos, todos podían tener motivos para acabar con la vida de Olive, lo cual, pese a estar muy visto, es un gancho, pero el “giro” final es decepcionante, una mentira.Por otro lado, están Frank y Emma, los policías que llevan la investigación, también con sus propios problemas, pero la mayoría de personajes son anodinos.No lo llegaría a considerar thriller pese a haber una muerte y una investigación, tiene un ritmo muy lento pese a su narrativa simple.', '2023/03/01', 3)
 
-insert into etiqueta values(1, 'Maravilloso')
-insert into etiqueta values(2, 'Predecible')
-insert into etiqueta values(3, 'Tedioso')
+insert into lista values(1, 'T', 'T', 'F', 1, 1)
+insert into lista values(2, 'F', 'F', 'T', 2, 2)
+insert into lista values(3, 'F', 'T', 'F', 3, 3)
+insert into lista values(4, 'T', 'T', 'F', 1, 3)
+insert into lista values(5, 'F', 'T', 'F', 2, 1)
+insert into lista values(6, 'F', 'T', 'F', 3, 2)
 
 insert into libroAutor values(1, 1)
 insert into libroAutor values(2, 2)
@@ -171,20 +195,13 @@ insert into libroGenero values(1, 1)
 insert into libroGenero values(2, 2)
 insert into libroGenero values(3, 3)
 
-insert into comentarioEtiqueta values(1, 1)
-insert into comentarioEtiqueta values(2, 2)
-insert into comentarioEtiqueta values(3, 3)
-
 insert into libroEtiqueta values(1, 1)
 insert into libroEtiqueta values(2, 2)
 insert into libroEtiqueta values(3, 3)
 
-insert into lista values(1, 'T', 'T', 'F', 1, 1)
-insert into lista values(2, 'F', 'F', 'T', 2, 2)
-insert into lista values(3, 'F', 'T', 'F', 3, 3)
-insert into lista values(4, 'T', 'T', 'F', 1, 3)
-insert into lista values(5, 'F', 'T', 'F', 2, 1)
-insert into lista values(6, 'F', 'T', 'F', 3, 2)
+insert into comentarioEtiqueta values(1, 1)
+insert into comentarioEtiqueta values(2, 2)
+insert into comentarioEtiqueta values(3, 3)
 
 insert into amigo values(1,2)
 insert into amigo values(2,3)
