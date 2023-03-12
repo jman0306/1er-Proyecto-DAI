@@ -26,7 +26,7 @@ autor (cAutor(PK), nombre, cNacionalidad(FK))
 libro (cLibro(PK), nombre, fichaBiblio, calificación, suspendido, denuncias, cEditorial(FK))
 edicion (cEdicion(PK), nombre, link, cLibro(FK))
 usuario (cUsuario(PK), nombre, correo, fNacimiento, contraseña, cNacionalidad(FK))
-comentario (cComentario(PK), texto, fecha, cUsuario(FK))
+comentario (cComentario(PK), texto, fecha, denuncia, cUsuario(FK))
 lista (cLista(PK), favorito, leído, porLeer, cUsuario(FK), cLibro(FK))
 libroAutor (cLibro(PK)(FK), cAutor(PK)(FK))
 libroGenero (cLibro(PK)(FK), cGenero(PK)(FK))
@@ -97,6 +97,7 @@ create table comentario(
 cComentario int primary key not null,
 texto varchar(1500) not null,
 fecha date not null,
+denuncia varchar(1),
 cUsuario int references usuario not null
 )
 
@@ -176,9 +177,9 @@ insert into usuario values(1, 'Natalia Gomez', 'natGom@gmail.com', '2001/09/03',
 insert into usuario values(2, 'Daniela del Rio', 'daniRi@gmail.com', '2001/05/28', 'Dani05', 2)
 insert into usuario values(3, 'Juan Manuel Ambriz Nuñez', 'manriz@gmail.com', '2001/06/03', 'Manu06', 3)
 
-insert into comentario values(1, 'Una excelente representación de un pueblo fantasma elegíaco. El lugar inquietante de Rulfos te absorbe y te sumerge en la agitación de su pasado reciente. Como muchas obras de este género, Pedro Páramo es más una obra de humor que otra cosa. No hay una progresión coherente de la trama (aunque eso no quiere decir que nada avance), pero el pueblo y las voces que Rulfo da a sus habitantes son seductores. Puede que el tono nunca deje de ser lúgubre, pero la escasa prosa del autor nunca deja de ser absorbente. Este parece el tipo de historia que un escritor menor extendería durante el doble de tiempo, pero Rulfo mantiene todo bajo control y lo que podría convertirse en un lío confuso, en cambio, se desplaza serenamente de una voz a otra. No son exactamente cinco estrellas, para mí, como yo Me gustan algunas estructuras tradicionales, pero sigue siendo brillante y está muy cerca de la máxima puntuación.', '2023/03/12', 1)
-insert into comentario values(2, 'Que más se puede decir de este libro, tiene una secuencia de en la narrativa que te atrapa no puedes dejar de leer y leer a pesar de que algunas partes son un tanto predecibles el clic que haces con la historia te mantiene atento en todo momento, lo mejor que he leído en esta pandemia', '2023/03/05', 2)
-insert into comentario values(3, 'Novela lenta y liosa debido a la gran cantidad de personajes, los vecinos de una lujosa urbanización llamada Valle Marchito, donde fallece una de las vecinas y cuyo cuerpo está en casa descomponiéndose y sin que nadie se preocupe por ella durante tres meses.La única voz que engancha es la de Olive, la fallecida, el resto, en tercera persona, no dice mucho. Todos los vecinos tienen sus problemas y sus secretos, todos podían tener motivos para acabar con la vida de Olive, lo cual, pese a estar muy visto, es un gancho, pero el “giro” final es decepcionante, una mentira.Por otro lado, están Frank y Emma, los policías que llevan la investigación, también con sus propios problemas, pero la mayoría de personajes son anodinos.No lo llegaría a considerar thriller pese a haber una muerte y una investigación, tiene un ritmo muy lento pese a su narrativa simple.', '2023/03/01', 3)
+insert into comentario values(1, 'Una excelente representación de un pueblo fantasma elegíaco. El lugar inquietante de Rulfos te absorbe y te sumerge en la agitación de su pasado reciente. Como muchas obras de este género, Pedro Páramo es más una obra de humor que otra cosa. No hay una progresión coherente de la trama (aunque eso no quiere decir que nada avance), pero el pueblo y las voces que Rulfo da a sus habitantes son seductores. Puede que el tono nunca deje de ser lúgubre, pero la escasa prosa del autor nunca deja de ser absorbente. Este parece el tipo de historia que un escritor menor extendería durante el doble de tiempo, pero Rulfo mantiene todo bajo control y lo que podría convertirse en un lío confuso, en cambio, se desplaza serenamente de una voz a otra. No son exactamente cinco estrellas, para mí, como yo Me gustan algunas estructuras tradicionales, pero sigue siendo brillante y está muy cerca de la máxima puntuación.', '2023/03/12','F', 1)
+insert into comentario values(2, 'Que más se puede decir de este libro, tiene una secuencia de en la narrativa que te atrapa no puedes dejar de leer y leer a pesar de que algunas partes son un tanto predecibles el clic que haces con la historia te mantiene atento en todo momento, lo mejor que he leído en esta pandemia', '2023/03/05', 'F', 2)
+insert into comentario values(3, 'Novela lenta y liosa debido a la gran cantidad de personajes, los vecinos de una lujosa urbanización llamada Valle Marchito, donde fallece una de las vecinas y cuyo cuerpo está en casa descomponiéndose y sin que nadie se preocupe por ella durante tres meses.La única voz que engancha es la de Olive, la fallecida, el resto, en tercera persona, no dice mucho. Todos los vecinos tienen sus problemas y sus secretos, todos podían tener motivos para acabar con la vida de Olive, lo cual, pese a estar muy visto, es un gancho, pero el “giro” final es decepcionante, una mentira.Por otro lado, están Frank y Emma, los policías que llevan la investigación, también con sus propios problemas, pero la mayoría de personajes son anodinos.No lo llegaría a considerar thriller pese a haber una muerte y una investigación, tiene un ritmo muy lento pese a su narrativa simple.', '2023/03/01','T', 3)
 
 insert into lista values(1, 'T', 'T', 'F', 1, 1)
 insert into lista values(2, 'F', 'F', 'T', 2, 2)
